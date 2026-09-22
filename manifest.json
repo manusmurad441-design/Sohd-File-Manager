@@ -1,0 +1,22 @@
+{
+  "format_version": "0.1",
+  "id": "org.sohdow.filemanager",
+  "name": "Sohd File Manager",
+  "version": "0.1.0",
+  "developer": {
+    "name": "Sohdow Project"
+  },
+  "description": "A lightweight local file manager for the Sohdow ecosystem.",
+  "icon": "icon.png",
+  "entry_point": "app/main.py",
+  "runtime": "python3",
+  "architecture": ["any"],
+  "permissions": [
+    "filesystem.read",
+    "filesystem.write",
+    "filesystem.delete",
+    "filesystem.open"
+  ],
+  "dependencies": {},
+  "min_sohdow_version": "0.1.0"
+}
