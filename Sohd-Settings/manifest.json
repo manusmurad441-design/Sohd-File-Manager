@@ -1,0 +1,25 @@
+{
+  "format_version": "0.1",
+  "id": "org.sohdow.settings",
+  "name": "Sohd Settings",
+  "version": "0.1.0",
+  "developer": {
+    "name": "Sohdow Project"
+  },
+  "description": "Native local settings and system information for the Sohdow ecosystem.",
+  "icon": "icon.png",
+  "entry_point": "app/main.py",
+  "runtime": "python3",
+  "architecture": ["any"],
+  "permissions": [
+    "system.info",
+    "system.display",
+    "system.audio",
+    "system.network",
+    "filesystem.read",
+    "filesystem.write",
+    "process.launch"
+  ],
+  "dependencies": {},
+  "min_sohdow_version": "0.1.0"
+}

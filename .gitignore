@@ -1,5 +1,19 @@
+# Python caches and local state
 __pycache__/
 *.py[cod]
+.pytest_cache/
 .local-sohd/
 local-sohd/
-build/
+*.tmp
+
+# Local application state
+Sohd-Settings/settings.json
+Sohd-Document-Editor/recent.json
+
+# Generated build metadata; validated distribution packages in dist/ are kept
+*/build/
+
+# Local editor and OS metadata
+.vscode/
+.idea/
+.DS_Store

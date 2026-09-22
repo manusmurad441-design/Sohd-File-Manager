@@ -1,78 +1,46 @@
-# Sohd File Manager 0.1
+# Sohdow Official Applications 0.1
 
-Sohd File Manager is the second official Sohdow application. It is a native desktop file manager built with PyQt6 and Python’s standard library. It works on local HDDs, SSDs, removable volumes mounted by the host system, and ordinary folders without a cloud service or database.
+This repository contains the four official Sohdow 0.1 desktop applications. Each application is maintained in its own directory and uses the existing **Sohd App Format 0.1** with the local `Sohd-App-Format` SDK.
 
-## Features
+## Applications
 
-The application provides a filesystem tree with root, home, and temporary-volume shortcuts; path navigation; sortable files and folders; create folder; rename; copy; cut; paste; permanent delete with confirmation; recursive case-insensitive search; file and folder properties; native opening through desktop associations; storage totals, used space, and free space; `.soh` package manifest inspection; and keyboard shortcuts.
+| Application | Directory | Package ID | Runtime |
+|---|---|---|---|
+| Sohd Browser | `Sohd-Browser/` | `org.sohdow.browser` | `python3` |
+| Sohd File Manager | `Sohd-File-Manager/` | `org.sohdow.filemanager` | `python3` |
+| Sohd Settings | `Sohd-Settings/` | `org.sohdow.settings` | `python3` |
+| Sohd Document Editor | `Sohd-Document-Editor/` | `org.sohdow.documenteditor` | `python3` |
 
-The file manager does not include placeholder buttons. Every toolbar and menu operation invokes a concrete filesystem, Qt model, storage, search, package-inspection, or desktop-open operation.
+Each application includes its own README, `LICENSE`, dependency/license documentation, tests, manifest, source tree, and validated `.soh` package in `dist/`.
 
-## Runtime
+## Requirements
 
-Install the free open-source GUI binding once:
+The applications are designed for a $0 local development workflow. They use Python 3.11+ and free/open-source-compatible host runtimes:
 
-```bash
-python3 -m pip install --user PyQt6
-```
+- PyQt6 for native desktop widgets;
+- Qt WebEngine for Sohd Browser;
+- Python standard library services for application logic and local persistence.
 
-See [dependencies and licenses](docs/DEPENDENCIES.md) and [runtime instructions](docs/RUNTIME.md).
+Install only the runtime needed for the application you want to run. See each app’s `docs/DEPENDENCIES.md` and `docs/RUNTIME.md`.
 
-Run the application from source:
+## Build and validate an application
 
-```bash
-cd /home/ubuntu/Sohdow-Apps/Sohd-File-Manager
-python3 app/main.py
-```
-
-Use `--self-test` for a short launch-and-exit check:
-
-```bash
-QT_QPA_PLATFORM=offscreen python3 app/main.py --self-test
-```
-
-## Keyboard shortcuts
-
-| Shortcut | Action |
-|---|---|
-| `Ctrl+O` | Open selected file |
-| `Ctrl+Shift+N` | Create a folder |
-| `F2` | Rename the selected item |
-| `Ctrl+C` | Copy selected items |
-| `Ctrl+X` | Mark selected items to move |
-| `Ctrl+V` | Paste into the current folder |
-| `Delete` | Delete selected items after confirmation |
-| `Alt+Enter` | Show file properties |
-| `Ctrl+F` | Search the current folder recursively |
-| `F5` | Refresh the current folder |
-| `Alt+Up` | Go to the parent folder |
-| `Alt+Left` | Navigate to the parent folder |
-| `Alt+Right` | Re-open the path in the address bar |
-| `Ctrl+Q` | Quit |
-
-## Sohd packages
-
-`.soh` files are shown as **Sohd application packages**. Double-clicking or opening one reads its `manifest.json` and displays the application name, version, and ID. Invalid or unreadable packages produce an error dialog and are not executed. The file manager does not install packages; installation remains the responsibility of the Sohd SDK and future Sohdow OS policy.
-
-## Building and packaging
-
-Use the existing Sohd App Format 0.1 SDK:
+The repository does not include the SDK as a nested dependency. Use the existing local SDK checkout:
 
 ```bash
-cd /home/ubuntu/Sohd-App-Format
-./bin/sohd build /home/ubuntu/Sohdow-Apps/Sohd-File-Manager
-./bin/sohd package /home/ubuntu/Sohdow-Apps/Sohd-File-Manager \
-  --output /home/ubuntu/Sohdow-Apps/Sohd-File-Manager/dist/Sohd-File-Manager.soh
-./bin/sohd validate /home/ubuntu/Sohdow-Apps/Sohd-File-Manager/dist/Sohd-File-Manager.soh
-./bin/sohd install /home/ubuntu/Sohdow-Apps/Sohd-File-Manager/dist/Sohd-File-Manager.soh \
-  --root /tmp/sohd-file-manager-install
-./bin/sohd run org.sohdow.filemanager --root /tmp/sohd-file-manager-install -- --self-test
+/home/ubuntu/Sohd-App-Format/bin/sohd build /home/ubuntu/Sohdow-Apps/Sohd-Browser
+/home/ubuntu/Sohd-App-Format/bin/sohd package /home/ubuntu/Sohdow-Apps/Sohd-Browser \
+  --output /home/ubuntu/Sohdow-Apps/Sohd-Browser/dist/Sohd-Browser.soh
+/home/ubuntu/Sohd-App-Format/bin/sohd validate \
+  /home/ubuntu/Sohdow-Apps/Sohd-Browser/dist/Sohd-Browser.soh
 ```
 
-## Scope
+Replace the Browser paths with the directory and package name of another application. The package format, manifest schema, and SDK behavior are not changed by this repository.
 
-This project contains only Sohd File Manager 0.1. It does not implement Sohd Store, Sohdow OS, package installation, cloud synchronization, network file shares, archive extraction, or another application.
+## Repository scope
+
+This repository contains only the four official applications listed above. It does not contain Sohdow OS, Sohd Store, a cloud service, a package registry, or additional applications. Current manifest permissions are declarative under Sohd App Format 0.1; runtime sandbox enforcement remains a future OS responsibility.
 
 ## License
 
-The project code is MIT licensed. PyQt6, Qt, and host desktop utilities retain their own licenses as described in [DEPENDENCIES.md](docs/DEPENDENCIES.md).
+The application source is MIT licensed unless a file states otherwise. Third-party components retain their own licenses, documented per application.

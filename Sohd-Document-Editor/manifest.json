@@ -1,0 +1,20 @@
+{
+  "format_version": "0.1",
+  "id": "org.sohdow.documenteditor",
+  "name": "Sohd Document Editor",
+  "version": "0.1.0",
+  "developer": {
+    "name": "Sohdow Project"
+  },
+  "description": "A lightweight native UTF-8 text editor for the Sohdow ecosystem.",
+  "icon": "icon.png",
+  "entry_point": "app/main.py",
+  "runtime": "python3",
+  "architecture": ["any"],
+  "permissions": [
+    "filesystem.read",
+    "filesystem.write"
+  ],
+  "dependencies": {},
+  "min_sohdow_version": "0.1.0"
+}

@@ -1,0 +1,6 @@
+__pycache__/
+*.py[cod]
+.local-sohd/
+local-sohd/
+build/
+settings.json
